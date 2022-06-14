@@ -1,6 +1,8 @@
+from http import server
 import json
 
-var_json={
+import csv
+dicciona={
     '1020': {'description': 'PSEG ALAMEDA 14 (DAVANT JARDÍ VIA CENTRAL) - VALÈNCIA',
              'id': '1020',
              'lat': '4372694.493',
@@ -152,7 +154,43 @@ var_json={
              'lon': '728257.03',
              'name': 'Ramon Llull - Bernat Fenollar'}
 }
-def get_name_description(clave,diccionario):
+def get_name_description(clave,dic):
+    for i in dic:
+        if clave==i: 
+                print("Para la clave "+ i)
+                print(dic[i])
+
+
+
+def search_by_lon(lon,dic):
+    for i in dic:
+        dic_nuevo=dic[i]
+        for k, v in dic_nuevo.items():
+            print("Clave: ",k," Valor: ",v)
+        
+
+        
+        
+def get_min(clave,dic):
     
     
-get_name(clave,var_json)
+    for k, v in dic.items():
+        if k==clave:
+            lista=v
+            print("Clave: ",k," Valor: ",v)
+            print("para el valor "+k)
+            print(lista)
+
+def read_data(archivo1,archivo2):
+   
+    with open(archivo1, 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            pritn("H")
+            
+
+            
+
+search_by_lon(728257.03,dicciona)   
+#get_name_description('1080',dicciona)
+#get_min('1080',dicciona)
