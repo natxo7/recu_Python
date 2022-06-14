@@ -159,6 +159,9 @@ def get_name_description(clave,dic):
         if clave==i: 
                 print("Para la clave "+ i)
                 print(dic[i])
+                if i=="name":
+                    pritn("")
+                   
 
 
 
@@ -166,31 +169,48 @@ def search_by_lon(lon,dic):
     for i in dic:
         dic_nuevo=dic[i]
         for k, v in dic_nuevo.items():
-            print("Clave: ",k," Valor: ",v)
+            
+            if str(v)==str(lon):
+                print("PAra la longitud "+str(lon))
+                print(i)
         
 
         
         
 def get_min(clave,dic):
+    for i in dic:
+        dic_nuevo=dic[i]
+        for k, v in dic_nuevo.items():
+            if k=="description":
+                res=dic["description"]
+                print(res)
+               
     
-    
-    for k, v in dic.items():
-        if k==clave:
-            lista=v
-            print("Clave: ",k," Valor: ",v)
-            print("para el valor "+k)
-            print(lista)
+   
 
 def read_data(archivo1,archivo2):
    
+    l1 = []
+    l2 = []
+
     with open(archivo1, 'r') as file:
         reader = csv.reader(file)
         for row in reader:
-            pritn("H")
+            l1.append(row)
+
+           
+    print(l1)
+
+    with open(archivo2, 'r') as file2:
+        reader2 = csv.reader(file2)
+        for row2 in reader2:
+            l2.append(row2)
+    print(l1)
+    print(l2)
             
 
             
 
-search_by_lon(728257.03,dicciona)   
-#get_name_description('1080',dicciona)
-#get_min('1080',dicciona)
+#search_by_lon(728257.03,dicciona)   
+get_name_description('1080',dicciona)
+#get_min('1023',dicciona)
