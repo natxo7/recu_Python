@@ -155,14 +155,15 @@ dicciona={
              'name': 'Ramon Llull - Bernat Fenollar'}
 }
 def get_name_description(clave,dic):
+    
+    info = dic.get(clave)
     for i in dic:
         if clave==i: 
-                print("Para la clave "+ i)
-                print(dic[i])
-                if i=="name":
-                    pritn("")
+            print("para la clave" + i)
+            print(info['name'],info['description'])
+            return info['name'],info['description']
+    raise ValueError("Ha saltado un error")
                    
-
 
 
 def search_by_lon(lon,dic):
@@ -173,17 +174,21 @@ def search_by_lon(lon,dic):
             if str(v)==str(lon):
                 print("PAra la longitud "+str(lon))
                 print(i)
+    #else:
+                
+         #raise ValueError("Error de  clave")
+            
         
 
         
         
 def get_min(clave,dic):
+    info = dic.get(clave)
     for i in dic:
         dic_nuevo=dic[i]
         for k, v in dic_nuevo.items():
             if k=="description":
-                res=dic["description"]
-                print(res)
+                print(info['name'],info['description'])
                
     
    
@@ -196,10 +201,11 @@ def read_data(archivo1,archivo2):
     with open(archivo1, 'r') as file:
         reader = csv.reader(file)
         for row in reader:
-            l1.append(row)
+           print(row)
+           # l1.append(row)
 
            
-    print(l1)
+    
 
     with open(archivo2, 'r') as file2:
         reader2 = csv.reader(file2)
@@ -210,7 +216,7 @@ def read_data(archivo1,archivo2):
             
 
             
-
+#read_data("stops.csv","stops_data.csv")
 #search_by_lon(728257.03,dicciona)   
 get_name_description('1080',dicciona)
 #get_min('1023',dicciona)
